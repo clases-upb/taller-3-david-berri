@@ -6,7 +6,17 @@ package taller3;
 public class App {
 
    public static void main(String[] args) {
-   
+   try {
+      System.out.println(Escribir_asc(3, 5, 2));
+      System.out.println(Obtener_cifras(10));
+      System.out.println(Clasificar_char('a'));
+      System.out.println(Hallar_division_exacta(10, 5));
+      System.out.println(Consultar_hab((byte)1, "VE"));
+      System.out.println(Obtener_obs(true, false, false));
+      System.out.println(Conocer_invitacion("verde"));
+   } catch (Exception e) {
+      
+   }
 
    }
 
@@ -21,6 +31,44 @@ public class App {
     * hay un error inesperado, deberá mostrar
     * el mensaje: "Ocurrió un error inesperado".
     */
+public static String Escribir_asc(int a, int b, int c) {
+   try {
+         String mensaje = "";
+
+         if (a != b && a != c && b != c) {
+              if (a > b && b > c) {
+                  mensaje = a + " - " + b + " - " + c;
+      } 
+         else if (a > c && c > b) {
+                  mensaje = a + " - " + c + " - " + b;
+      } 
+         else if (b > a && a > c) {
+                  mensaje = b + " - " + a + " - " + c;
+      } 
+         else if (b > c && c > a) {
+                  mensaje = b + " - " + c + " - " + a;
+      }
+          else if (c > a && a > b) {
+                  mensaje = c + " - " + a + " - " + b;
+      } 
+         else if (c > a && b > a) {
+                  mensaje = c + " - " + b + " - " + a;
+      }
+              return mensaje;
+      } else {
+            return "Error: La función no considera números iguales";
+              
+      }
+      } catch (Exception e) {
+         return "Ocurrió un error inesperado";
+          
+      }
+   
+
+      
+}
+
+
 
 
 
@@ -32,6 +80,48 @@ public class App {
     * no está en el rango devuelve 0. Y si hay un error inesperado, devuelve -1.
     * 
     */
+public static byte Obtener_cifras(int numero){
+   try {
+      byte resultado = 0; 
+      final int a = 10, b = 100, c=1000, d=10000, e=50000, no_valido = 0, nro_1 = 1, nro_2 = 2, nro_3 = 3, nro_4 = 4, nro_5 = 5;
+
+      if(no_valido <= numero && numero <= e){
+
+         if(no_valido <= numero && numero < a){
+            resultado = nro_1;
+
+   }
+      else if(a <= numero && numero < b){
+         resultado = nro_2; 
+   }
+      else if(b <= numero && numero < c){
+         resultado = nro_3;
+   } 
+      else if(c <= numero && numero < d){
+         resultado = nro_4;
+   }
+      else if(d <= numero && numero < e){
+         resultado = nro_5;
+         
+   }
+
+      else{
+         return -1;
+   }
+   }
+      else{
+         return 0;
+   }
+         return resultado;
+
+    
+
+
+   }catch (Exception e) {
+      return -1;
+   }
+
+}
 
 
 
@@ -48,8 +138,36 @@ public class App {
     * "Ocurrió un error inesperado".
     * 
     */
+public static String Clasificar_char(char caracter){
+   try {
+        String mensaje = "";
+        int codigo_Ascii = (int) caracter;
+        final int a = 33, b = 255, c = 65, d = 122, e = 48, f = 57, g = 32, h= 47, i = 58, j = 64, k = 123, l = 126;
 
+         if(caracter >= a && caracter <= b){
 
+         if(caracter >= c && caracter <= d){
+            mensaje = "ES LETRA";
+   }
+         else if(caracter >= e && caracter <= f){
+
+            mensaje = "ES NUMERO";
+   }
+         else if(caracter >= g && caracter <= h || caracter >= i && caracter <= j || caracter >= k && caracter <= l ){
+
+            mensaje = "ESPECIAL";
+   }
+
+   }
+        else {
+         return "Ocurrió un error inesperado";
+   }
+         return mensaje;
+
+   } catch (Exception e) {
+         return "Ocurrió un error inesperado";
+   }
+}
 
    /*
     * 
@@ -69,6 +187,31 @@ public class App {
     * 
     * 
     */
+public static String Hallar_division_exacta(int n1, int n2){
+   try {
+      String resultado = "";
+
+      if(n1 <= 0 || n2 <= 0){
+         resultado = "NO SE ADMITE CERO O NEGATIVOS";
+   }
+      else if(n1 % n2 == 0){
+         resultado = "DIVISION EXACTA";
+   }
+      else if(n1 % n2 != 0){
+         resultado = "DIVISION NO EXACTA";
+   }
+
+   else{
+         return "NO SE ADMITE CERO O NEGATIVOS";
+   }
+
+         return resultado;
+
+   } catch (Exception e) {
+         return "Ocurrió un error inesperado";
+   }
+
+}
 
    
 
@@ -96,7 +239,38 @@ public class App {
     * Si hay un error inesperado, deberá mostrar el mensaje:
     * "Ocurrió un error inesperado".
     */
+public static  String Consultar_hab(byte camas,String opcion){
+   try {
+      String mensaje = "";
+      final byte cama_a = 2, cama_b = 1, cama_c = 3, no_valido = 0, no_valido2 = 4;
+      final String VE = "VE", AA="AA";
 
+      if(camas >= no_valido && no_valido2 >= camas || "VE".equals(opcion) || "AA".equals(opcion) ){
+
+         if(camas == cama_a && "AA".equals(opcion)){
+               mensaje = "101|301";
+   }
+         else if(camas == cama_a && "VE".equals(opcion)){
+            mensaje = "202";
+   }
+         else if(camas == cama_b && "VE".equals(opcion)){
+            mensaje = "102";
+   }
+         else if(camas == cama_c && "AA".equals(opcion)){
+            mensaje = "201";
+    }
+
+         return mensaje;
+
+   }
+      else{
+         return "DATOS NO VÁLIDOS";
+   }
+
+   } catch (Exception e) {
+      return "Ocurrió un error inesperado";
+   }
+}
 
    
    /*
@@ -113,11 +287,32 @@ public class App {
     * Si hay un error inesperado, deberá mostrar el mensaje:
     * "Ocurrió un error inesperado".
     */
+public static String Obtener_obs(boolean p1, boolean p2, boolean p3){
+   try {
+      String mensaje = "";
+
+      if(p1== false && p2 == false && p3 == false){
+         return "PLATOS NO VÁLIDOS";
+   }
+      else if(p1 == true && p2 == false && p3 == false){
+         mensaje = "POSTRE";
+   }
+      else if(p1 == true && p2 == true && p3 == false){
+         mensaje = "BEBIDA";
+   }
+      else if(p1 == true && p2 == true && p3 == true){
+         mensaje = "BEBIDA Y POSTRE";
+   }
+
+         return mensaje;
 
 
 
+   } catch (Exception e) {
+   return "Ocurrió un error inesperado";
+   }
 
-
+}
 
 
    /*
@@ -141,4 +336,40 @@ public class App {
     * "Ocurrió un error inesperado".
     * 
     */
+public static String Conocer_invitacion(String color){
+   try {
+      String mensaje = "";
 
+
+
+   switch (color) {
+      case "verde":
+                    mensaje = "Invita a las cervezas";
+                    break;
+      case "azul":
+                    mensaje = "Invita a la pizza";
+                    break;
+       case "rojo":
+                    mensaje = "Invita al postre";
+                    break;
+      case "amarillo":
+                    mensaje = "Paga el parqueadero de todos";
+                    break;
+      case "blanco":
+      case "negro":
+                    mensaje = "Vaya y disfrute";
+                    break;
+   default:
+                    mensaje = "Error en el color";
+                    break;
+            
+   }
+
+   return mensaje;
+
+   } catch (Exception e) {
+      return "Ocurrió un error inesperado";
+   }
+   
+}
+}
